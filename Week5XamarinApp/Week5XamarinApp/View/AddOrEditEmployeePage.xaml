@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Week5XamarinApp.View.AddOrEditEmployeePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry Placeholder="Employee Name" Text="{Binding Employee.Name}"/>
+            <Entry Placeholder="Designation" Text="{Binding Empoloyee.Designation}"/>
+            <Button Text="Save" Clicked="Button_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

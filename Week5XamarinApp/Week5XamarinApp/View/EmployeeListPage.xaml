@@ -2,14 +2,51 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Week5XamarinApp.View.EmployeeListPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="ToolbarItem_Clicked"></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Content>
         <StackLayout>
-            <Entry Placeholder="Employee Name" Text="{Binding EmployeeName}"/>
-            <Button Text="Add" Command="{Binding AddEmployeeCommand}"/>
-            <Button Text="Remove" Command="{Binding RemoveEmployeeCommand}"/>
-            <Button Text="Update" Command="{Binding UpdateEmployeeCommand}"/>
 
-            <ListView x:Name="lstVwEmployees" ItemsSource="{Binding Employees}" SelectedItem="{Binding SelectedEmployee}"/>
+            <ListView x:Name="lstVwEmployees" ItemsSource="{Binding Employees}" SelectedItem="{Binding SelectedEmployee}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="7*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding PictureUrl}" Grid.Column="0"/>
+                                <Label Text="{Binding Name}"
+                                       FontSize="Medium"
+                                       FontAttributes="Bold"
+                                       Grid.Column="1"
+                                       VerticalTextAlignment="Start"/>
+                                <Label Text="{Binding Designation}"
+                                       Grid.Column="1"
+                                       VerticalTextAlignment="End"/>
+                                <Image Source="edit.png" Grid.Column="2">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Tapped="TapGestureRecognizer_Tapped_Edit"
+                                            CommandParameter="{Binding EmployeeId}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                                <Image Source="trash.png" Grid.Column="3">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Tapped="TapGestureRecognizer_Tapped_Remove"
+                                            CommandParameter="{Binding EmployeeId}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

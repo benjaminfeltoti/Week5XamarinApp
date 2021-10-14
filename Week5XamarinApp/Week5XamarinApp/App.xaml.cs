@@ -11,7 +11,7 @@ namespace Week5XamarinApp
         {
             InitializeComponent();
 
-            MainPage = new EmployeeListPage();
+            MainPage = new NavigationPage(new EmployeeListPage());
         }
 
         protected override void OnStart()

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Week5XamarinApp.ViewModel;
 
 namespace Week5XamarinApp.Model
 {
